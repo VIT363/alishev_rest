@@ -1,6 +1,9 @@
 package com.example.alishev_rest.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name = "employees")
@@ -11,6 +14,8 @@ public class Employee {
     private int id;
 
     @Column(name = "name")
+    @NotEmpty(message = "Name should not be empty")
+    @Size(min = 2, max = 30, message = "Name should be between 2 and 30 characters")
     private String name;
 
     @Column(name = "surname")
